@@ -6,6 +6,7 @@ class Movie extends Equatable {
   final String releaseDate;
   final String posterPath;
   final List<int> genreIds;
+  final bool isFavorite;
 
   const Movie({
     required this.id,
@@ -13,6 +14,7 @@ class Movie extends Equatable {
     required this.releaseDate,
     required this.posterPath,
     required this.genreIds,
+    required this.isFavorite,
   });
 
   @override

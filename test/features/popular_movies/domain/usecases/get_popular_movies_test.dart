@@ -24,6 +24,7 @@ void main() {
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
     genreIds: [1, 2, 3],
+    isFavorite: false,
   );
 
   final listOfMovies = <Movie>[tMovie];

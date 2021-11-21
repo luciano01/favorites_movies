@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "title": "title",
+        "release_date": "releaseDate",
+        "poster_path": "posterPath",
+        "genre_ids": [
+            1,
+            2,
+            3
+        ],
+        "isFavorite": false
+    }
+]
