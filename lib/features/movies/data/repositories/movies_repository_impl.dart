@@ -4,9 +4,9 @@ import 'package:favorites_movies/features/movies/data/datasources/movies_remote_
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:favorites_movies/features/movies/domain/repositories/movies_repository.dart';
+import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 
-class MoviesRepositoryImpl implements MoviesRepository {
+class MoviesRepositoryImpl implements PopularMoviesRepository {
   final MoviesRemoteDataSource remote;
   final NetworkInfo network;
 

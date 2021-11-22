@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
-import 'package:favorites_movies/features/movies/domain/repositories/movies_repository.dart';
+import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_popular_movies.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -8,13 +8,13 @@ import 'package:mockito/mockito.dart';
 
 import 'get_popular_movies_test.mocks.dart';
 
-@GenerateMocks([MoviesRepository])
+@GenerateMocks([PopularMoviesRepository])
 void main() {
   late GetPopularMovies usecase;
-  late MockMoviesRepository mockMoviesRepository;
+  late MockPopularMoviesRepository mockMoviesRepository;
 
   setUp(() {
-    mockMoviesRepository = MockMoviesRepository();
+    mockMoviesRepository = MockPopularMoviesRepository();
     usecase = GetPopularMovies(repository: mockMoviesRepository);
   });
 

@@ -1,10 +1,10 @@
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
-import 'package:favorites_movies/features/movies/domain/repositories/movies_repository.dart';
+import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 
-class GetPopularMovies implements MoviesRepository {
-  final MoviesRepository repository;
+class GetPopularMovies implements PopularMoviesRepository {
+  final PopularMoviesRepository repository;
 
   GetPopularMovies({required this.repository});
 

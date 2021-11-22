@@ -4,4 +4,6 @@ class BaseUrl {
   static const String language = 'en-US';
   static const String urlPopularMovies =
       '$baseUrl/movie/popular?api_key=$apiKey&language=$language&page=1';
+  static const String urlGenres =
+      '$baseUrl/genre/movie/list?api_key=$apiKey&language=$language';
 }

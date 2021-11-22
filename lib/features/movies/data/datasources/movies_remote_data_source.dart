@@ -9,10 +9,10 @@ abstract class MoviesRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies();
 }
 
-class MoviesRemoteDataSourceImpl implements MoviesRemoteDataSource {
+class PopularMoviesRemoteDataSourceImpl implements MoviesRemoteDataSource {
   final http.Client client;
 
-  MoviesRemoteDataSourceImpl({required this.client});
+  PopularMoviesRemoteDataSourceImpl({required this.client});
 
   @override
   Future<List<MovieModel>> getPopularMovies() async {

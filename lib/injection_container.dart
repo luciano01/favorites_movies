@@ -1,6 +1,6 @@
 import 'package:favorites_movies/features/movies/data/datasources/movies_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/repositories/movies_repository_impl.dart';
-import 'package:favorites_movies/features/movies/domain/repositories/movies_repository.dart';
+import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_popular_movies.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +16,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetPopularMovies(repository: sl()));
 
   // Repository
-  sl.registerLazySingleton<MoviesRepository>(
+  sl.registerLazySingleton<PopularMoviesRepository>(
     () => MoviesRepositoryImpl(
       remote: sl(),
       network: sl(),
@@ -25,7 +25,7 @@ Future<void> init() async {
 
   // Data sources
   sl.registerLazySingleton<MoviesRemoteDataSource>(
-    () => MoviesRemoteDataSourceImpl(client: sl()),
+    () => PopularMoviesRemoteDataSourceImpl(client: sl()),
   );
 
   //! External

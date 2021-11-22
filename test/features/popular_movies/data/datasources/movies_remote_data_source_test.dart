@@ -14,12 +14,13 @@ import 'movies_remote_data_source_test.mocks.dart';
 
 @GenerateMocks([http.Client])
 void main() {
-  late MoviesRemoteDataSourceImpl moviesRemoteDataSourceImpl;
+  late PopularMoviesRemoteDataSourceImpl moviesRemoteDataSourceImpl;
   late MockClient mockClient;
 
   setUp(() {
     mockClient = MockClient();
-    moviesRemoteDataSourceImpl = MoviesRemoteDataSourceImpl(client: mockClient);
+    moviesRemoteDataSourceImpl =
+        PopularMoviesRemoteDataSourceImpl(client: mockClient);
   });
 
   final tListMovieModel =

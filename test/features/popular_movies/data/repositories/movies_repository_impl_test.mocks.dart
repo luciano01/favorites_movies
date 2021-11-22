@@ -34,6 +34,8 @@ class MockMoviesRemoteDataSource extends _i1.Mock
           Invocation.method(#getPopularMovies, []),
           returnValue: Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
       as _i3.Future<List<_i4.MovieModel>>);
+  @override
+  String toString() => super.toString();
 }
 
 /// A class which mocks [NetworkInfo].
@@ -48,4 +50,6 @@ class MockNetworkInfo extends _i1.Mock implements _i5.NetworkInfo {
   _i3.Future<bool> get isConnected =>
       (super.noSuchMethod(Invocation.getter(#isConnected),
           returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
+  @override
+  String toString() => super.toString();
 }
