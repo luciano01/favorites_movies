@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:favorites_movies/core/error/exceptions.dart';
 import 'package:favorites_movies/core/error/failures.dart';
 import 'package:favorites_movies/core/network/network_info.dart';
-import 'package:favorites_movies/features/movies/data/datasources/movies_remote_data_source.dart';
+import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:favorites_movies/features/movies/data/repositories/movies_repository_impl.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,19 +12,19 @@ import 'package:mockito/mockito.dart';
 import 'movies_repository_impl_test.mocks.dart';
 
 @GenerateMocks([
-  MoviesRemoteDataSource,
+  PopularMoviesRemoteDataSource,
   NetworkInfo,
 ])
 void main() {
   late MoviesRepositoryImpl moviesRepositoryImpl;
-  late MockMoviesRemoteDataSource mockMoviesRemoteDataSource;
+  late MockPopularMoviesRemoteDataSource mockPopularMoviesRemoteDataSource;
   late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
-    mockMoviesRemoteDataSource = MockMoviesRemoteDataSource();
+    mockPopularMoviesRemoteDataSource = MockPopularMoviesRemoteDataSource();
     mockNetworkInfo = MockNetworkInfo();
     moviesRepositoryImpl = MoviesRepositoryImpl(
-      remote: mockMoviesRemoteDataSource,
+      remote: mockPopularMoviesRemoteDataSource,
       network: mockNetworkInfo,
     );
   });
@@ -45,12 +45,12 @@ void main() {
     // arrange
     when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
 
-    when(mockMoviesRemoteDataSource.getPopularMovies())
+    when(mockPopularMoviesRemoteDataSource.getPopularMovies())
         .thenAnswer((_) async => tListOfMoviesModel);
     // act
     final result = await moviesRepositoryImpl.getPopularMovies();
     // assert
-    verify(mockMoviesRemoteDataSource.getPopularMovies());
+    verify(mockPopularMoviesRemoteDataSource.getPopularMovies());
     expect(result, equals(Right(tListOfMoviesModel)));
   });
 
@@ -60,13 +60,13 @@ void main() {
     // arrange
     when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
 
-    when(mockMoviesRemoteDataSource.getPopularMovies())
+    when(mockPopularMoviesRemoteDataSource.getPopularMovies())
         .thenThrow(ServerException());
     // act
     final result = await moviesRepositoryImpl.getPopularMovies();
     // assert
-    verify(mockMoviesRemoteDataSource.getPopularMovies());
-    verifyNoMoreInteractions(mockMoviesRemoteDataSource);
+    verify(mockPopularMoviesRemoteDataSource.getPopularMovies());
+    verifyNoMoreInteractions(mockPopularMoviesRemoteDataSource);
     expect(result, equals(Left(ServerFailure('ServerFailure'))));
   });
 }

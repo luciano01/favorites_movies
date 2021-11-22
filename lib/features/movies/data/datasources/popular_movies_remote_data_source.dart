@@ -5,11 +5,11 @@ import 'package:favorites_movies/core/utils/base_url.dart';
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
-abstract class MoviesRemoteDataSource {
+abstract class PopularMoviesRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies();
 }
 
-class PopularMoviesRemoteDataSourceImpl implements MoviesRemoteDataSource {
+class PopularMoviesRemoteDataSourceImpl implements PopularMoviesRemoteDataSource {
   final http.Client client;
 
   PopularMoviesRemoteDataSourceImpl({required this.client});

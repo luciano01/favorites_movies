@@ -5,7 +5,7 @@
 import 'dart:async' as _i3;
 
 import 'package:favorites_movies/core/network/network_info.dart' as _i5;
-import 'package:favorites_movies/features/movies/data/datasources/movies_remote_data_source.dart'
+import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart'
     as _i2;
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart'
     as _i4;
@@ -20,12 +20,12 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-/// A class which mocks [MoviesRemoteDataSource].
+/// A class which mocks [PopularMoviesRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockMoviesRemoteDataSource extends _i1.Mock
-    implements _i2.MoviesRemoteDataSource {
-  MockMoviesRemoteDataSource() {
+class MockPopularMoviesRemoteDataSource extends _i1.Mock
+    implements _i2.PopularMoviesRemoteDataSource {
+  MockPopularMoviesRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
