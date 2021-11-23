@@ -37,6 +37,4 @@ class MockGenresRepository extends _i1.Mock implements _i3.GenresRepository {
           returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Genre>>>.value(
               _FakeEither_0<_i5.Failure, List<_i6.Genre>>())) as _i4
           .Future<_i2.Either<_i5.Failure, List<_i6.Genre>>>);
-  @override
-  String toString() => super.toString();
 }
