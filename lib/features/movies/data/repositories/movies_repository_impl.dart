@@ -6,11 +6,11 @@ import 'package:favorites_movies/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 
-class MoviesRepositoryImpl implements PopularMoviesRepository {
+class PopularMoviesRepositoryImpl implements PopularMoviesRepository {
   final PopularMoviesRemoteDataSource remote;
   final NetworkInfo network;
 
-  MoviesRepositoryImpl({
+  PopularMoviesRepositoryImpl({
     required this.remote,
     required this.network,
   });

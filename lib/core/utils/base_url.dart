@@ -6,4 +6,6 @@ class BaseUrl {
       '$baseUrl/movie/popular?api_key=$apiKey&language=$language&page=1';
   static const String urlGenres =
       '$baseUrl/genre/movie/list?api_key=$apiKey&language=$language';
+  static String urlPosterPath(String path) =>
+      'http://image.tmdb.org/t/p/w185$path';
 }

@@ -1,3 +1,4 @@
+import 'package:favorites_movies/core/network/network_info.dart';
 import 'package:favorites_movies/features/movies/data/datasources/genres_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/repositories/genres_repository_impl.dart';
@@ -6,6 +7,7 @@ import 'package:favorites_movies/features/movies/domain/repositories/genres_repo
 import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_genres.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_popular_movies.dart';
+import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -13,8 +15,12 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  // BLoC or MobX Store
-  // sl.registerFactory();
+  // BLoC
+  sl.registerFactory(
+    () => MoviesBloc(
+      usecase: sl(),
+    ),
+  );
 
   // Use cases
   sl.registerLazySingleton(() => GetPopularMovies(repository: sl()));
@@ -22,7 +28,7 @@ Future<void> init() async {
 
   // Repository
   sl.registerLazySingleton<PopularMoviesRepository>(
-    () => MoviesRepositoryImpl(
+    () => PopularMoviesRepositoryImpl(
       remote: sl(),
       network: sl(),
     ),
@@ -42,7 +48,12 @@ Future<void> init() async {
     () => GenresRemoteDataSourceImpl(client: sl()),
   );
 
-  //! External
+  // Core
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(
+        internetConnectionChecker: sl(),
+      ));
+
+  // External
   sl.registerLazySingleton(() => http.Client());
   sl.registerLazySingleton(() => InternetConnectionChecker());
 }

@@ -9,7 +9,8 @@ abstract class PopularMoviesRemoteDataSource {
   Future<List<MovieModel>> getPopularMovies();
 }
 
-class PopularMoviesRemoteDataSourceImpl implements PopularMoviesRemoteDataSource {
+class PopularMoviesRemoteDataSourceImpl
+    implements PopularMoviesRemoteDataSource {
   final http.Client client;
 
   PopularMoviesRemoteDataSourceImpl({required this.client});
@@ -23,8 +24,10 @@ class PopularMoviesRemoteDataSourceImpl implements PopularMoviesRemoteDataSource
       },
     );
 
+    var body = jsonDecode(response.body);
+
     if (response.statusCode == 200) {
-      return MovieModel.fromJsonList(jsonDecode(response.body));
+      return MovieModel.fromJsonList(body["results"]);
     } else {
       throw ServerException();
     }

@@ -16,14 +16,14 @@ import 'movies_repository_impl_test.mocks.dart';
   NetworkInfo,
 ])
 void main() {
-  late MoviesRepositoryImpl moviesRepositoryImpl;
+  late PopularMoviesRepositoryImpl moviesRepositoryImpl;
   late MockPopularMoviesRemoteDataSource mockPopularMoviesRemoteDataSource;
   late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
     mockPopularMoviesRemoteDataSource = MockPopularMoviesRemoteDataSource();
     mockNetworkInfo = MockNetworkInfo();
-    moviesRepositoryImpl = MoviesRepositoryImpl(
+    moviesRepositoryImpl = PopularMoviesRepositoryImpl(
       remote: mockPopularMoviesRemoteDataSource,
       network: mockNetworkInfo,
     );
