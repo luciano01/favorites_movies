@@ -2,14 +2,12 @@
 // in favorites_movies/test/features/popular_movies/domain/usecases/get_popular_movies_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i3;
 
-import 'package:dartz/dartz.dart' as _i2;
-import 'package:favorites_movies/core/error/failures.dart' as _i5;
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart'
-    as _i6;
+    as _i4;
 import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart'
-    as _i3;
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -21,21 +19,20 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
-class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
-
 /// A class which mocks [PopularMoviesRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockPopularMoviesRepository extends _i1.Mock
-    implements _i3.PopularMoviesRepository {
+    implements _i2.PopularMoviesRepository {
   MockPopularMoviesRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Movie>>> getPopularMovies() =>
+  _i3.Future<List<_i4.Movie>> getPopularMovies() =>
       (super.noSuchMethod(Invocation.method(#getPopularMovies, []),
-          returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Movie>>>.value(
-              _FakeEither_0<_i5.Failure, List<_i6.Movie>>())) as _i4
-          .Future<_i2.Either<_i5.Failure, List<_i6.Movie>>>);
+              returnValue: Future<List<_i4.Movie>>.value(<_i4.Movie>[]))
+          as _i3.Future<List<_i4.Movie>>);
+  @override
+  String toString() => super.toString();
 }
