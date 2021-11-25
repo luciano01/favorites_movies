@@ -3,6 +3,7 @@ import 'package:favorites_movies/features/movies/data/datasources/popular_movies
 import 'package:favorites_movies/features/movies/data/repositories/popular_movies_repository_impl.dart';
 import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_popular_movies.dart';
+import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:internet_connection_checker/internet_connection_checker.dart';
@@ -11,6 +12,11 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   // BLoC
+  sl.registerFactory(
+    () => MoviesBloc(
+      usecase: sl(),
+    ),
+  );
 
   // UseCases
   sl.registerLazySingleton(

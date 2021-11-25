@@ -1,0 +1,48 @@
+import 'package:favorites_movies/core/utils/app_colors.dart';
+import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
+import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
+import 'package:favorites_movies/features/movies/presentation/widgets/grid_view_widget.dart';
+import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+
+class MoviesPage extends StatefulWidget {
+  const MoviesPage({Key? key}) : super(key: key);
+
+  @override
+  State<MoviesPage> createState() => _MoviesPageState();
+}
+
+class _MoviesPageState extends State<MoviesPage> {
+  final _bloc = GetIt.instance.get<MoviesBloc>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Container(
+          color: AppColors.background,
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: StreamBuilder(
+              stream: _bloc.outPopularMovies,
+              builder: (context, AsyncSnapshot<List<Movie>> snapshot) {
+                List<Movie>? listOfPopularMovies = snapshot.data;
+                dynamic error = snapshot.error;
+                if (error != null) {
+                  return Text(error.toString());
+                } else if (listOfPopularMovies == null) {
+                  return const LoadingWidget();
+                } else if (snapshot.hasData) {
+                  return GridViewWidget(listOfMovies: listOfPopularMovies);
+                }
+                return const LoadingWidget();
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,4 +1,5 @@
 import 'package:favorites_movies/core/utils/app_colors.dart';
+import 'package:favorites_movies/features/movies/presentation/pages/app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +20,7 @@ class AppWidget extends StatelessWidget {
           Theme.of(context).textTheme,
         ),
       ),
-      home: Container(),
+      home: const AppPage(),
     );
   }
 }
