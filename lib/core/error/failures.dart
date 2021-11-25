@@ -20,6 +20,15 @@ class HttpFailure extends Failure {
   List<Object?> get props => [message];
 }
 
+class SocketFailure extends Failure {
+  final String message;
+
+  SocketFailure(this.message);
+
+  @override
+  List<Object?> get props => [message];
+}
+
 class LocalFailure extends Failure {
   final String message;
 

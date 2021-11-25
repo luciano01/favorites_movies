@@ -36,7 +36,7 @@ void main() {
 
   test('Should return a valid List<Movie>.', () {
     // arrange
-    final List list = jsonDecode(fixture('list_movies.json'));
+    final List list = jsonDecode(fixture('list_movies.json'))["results"];
     // act
     final result = MovieModel.fromJsonList(list);
     // assert
