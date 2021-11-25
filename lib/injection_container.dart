@@ -23,7 +23,6 @@ Future<void> init() async {
   sl.registerLazySingleton<PopularMoviesRepository>(
     () => PopularMoviesRepositoryImpl(
       remote: sl(),
-      network: sl(),
     ),
   );
 
@@ -31,6 +30,7 @@ Future<void> init() async {
   sl.registerLazySingleton<PopularMoviesRemoteDataSource>(
     () => PopularMoviesRemoteDataSourceImpl(
       client: sl(),
+      network: sl(),
     ),
   );
 

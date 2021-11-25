@@ -1,4 +1,3 @@
-import 'package:favorites_movies/core/network/network_info.dart';
 import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:favorites_movies/features/movies/data/repositories/popular_movies_repository_impl.dart';
@@ -8,21 +7,15 @@ import 'package:mockito/mockito.dart';
 
 import 'popular_movies_repository_impl_test.mocks.dart';
 
-@GenerateMocks([
-  PopularMoviesRemoteDataSource,
-  NetworkInfo,
-])
+@GenerateMocks([PopularMoviesRemoteDataSource])
 void main() {
   late PopularMoviesRepositoryImpl popularMoviesRepositoryImpl;
   late MockPopularMoviesRemoteDataSource mockPopularMoviesRemoteDataSource;
-  late MockNetworkInfo mockNetworkInfo;
 
   setUp(() {
     mockPopularMoviesRemoteDataSource = MockPopularMoviesRemoteDataSource();
-    mockNetworkInfo = MockNetworkInfo();
     popularMoviesRepositoryImpl = PopularMoviesRepositoryImpl(
       remote: mockPopularMoviesRemoteDataSource,
-      network: mockNetworkInfo,
     );
   });
 
@@ -40,8 +33,6 @@ void main() {
   test('Should return data when call to remote data source is successful.',
       () async {
     // arrange
-    when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-
     when(mockPopularMoviesRemoteDataSource.getPopularMovies())
         .thenAnswer((_) async => tListOfMoviesModel);
     // act

@@ -4,7 +4,6 @@
 
 import 'dart:async' as _i3;
 
-import 'package:favorites_movies/core/network/network_info.dart' as _i5;
 import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart'
     as _i2;
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart'
@@ -34,22 +33,4 @@ class MockPopularMoviesRemoteDataSource extends _i1.Mock
           Invocation.method(#getPopularMovies, []),
           returnValue: Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
       as _i3.Future<List<_i4.MovieModel>>);
-  @override
-  String toString() => super.toString();
-}
-
-/// A class which mocks [NetworkInfo].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockNetworkInfo extends _i1.Mock implements _i5.NetworkInfo {
-  MockNetworkInfo() {
-    _i1.throwOnMissingStub(this);
-  }
-
-  @override
-  _i3.Future<bool> get isConnected =>
-      (super.noSuchMethod(Invocation.getter(#isConnected),
-          returnValue: Future<bool>.value(false)) as _i3.Future<bool>);
-  @override
-  String toString() => super.toString();
 }
