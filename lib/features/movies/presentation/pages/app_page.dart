@@ -36,7 +36,7 @@ class _AppPageState extends State<AppPage> {
           TextSpan(
             children: [
               TextSpan(
-                text: 'Favorites',
+                text: 'Popular',
                 style: AppTextStyles.textFavoritesStyle,
               ),
               TextSpan(
