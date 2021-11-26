@@ -105,8 +105,6 @@ class MockClient extends _i1.Mock implements _i4.Client {
   @override
   void close() => super.noSuchMethod(Invocation.method(#close, []),
       returnValueForMissingStub: null);
-  @override
-  String toString() => super.toString();
 }
 
 /// A class which mocks [NetworkInfo].
@@ -121,6 +119,4 @@ class MockNetworkInfo extends _i1.Mock implements _i9.NetworkInfo {
   _i5.Future<bool> get isConnected =>
       (super.noSuchMethod(Invocation.getter(#isConnected),
           returnValue: Future<bool>.value(false)) as _i5.Future<bool>);
-  @override
-  String toString() => super.toString();
 }

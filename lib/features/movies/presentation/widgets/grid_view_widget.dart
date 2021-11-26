@@ -1,12 +1,15 @@
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/list_item_widget.dart';
+import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
 
 class GridViewWidget extends StatelessWidget {
-  final List<Movie> listOfMovies;
+  final List<Movie> listOfPopularMovies;
+  final ScrollController scrollController;
   const GridViewWidget({
     Key? key,
-    required this.listOfMovies,
+    required this.listOfPopularMovies,
+    required this.scrollController,
   }) : super(key: key);
 
   @override
@@ -19,14 +22,18 @@ class GridViewWidget extends StatelessWidget {
           crossAxisCount: 2,
           mainAxisExtent: 230,
         ),
-        itemCount: listOfMovies.length,
+        controller: scrollController,
+        itemCount: listOfPopularMovies.length + 1,
         itemBuilder: (context, index) {
-          Movie movie = listOfMovies[index];
-          return ListItemWidget(
-            movie: movie,
-            onTap: () {},
-            onPressed: () {},
-          );
+          if (index == listOfPopularMovies.length) {
+            return const LoadingWidget();
+          } else {
+            return ListItemWidget(
+              movie: listOfPopularMovies[index],
+              onTap: () {},
+              onPressed: () {},
+            );
+          }
         },
       ),
     );

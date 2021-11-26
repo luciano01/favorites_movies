@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:favorites_movies/core/error/exceptions.dart';
 import 'package:favorites_movies/core/network/network_info.dart';
-import 'package:favorites_movies/core/utils/base_url.dart';
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
