@@ -24,8 +24,8 @@ class MoviesBloc extends Disposable {
   getPopularMovies() async {
     page++;
     var data = await usecase.getPopularMovies(page);
-    for (var user in data) {
-      _listOfPopularMovies.add(user);
+    for (var movie in data) {
+      _listOfPopularMovies.add(movie);
     }
     inputPopularMovies.add(_listOfPopularMovies);
   }

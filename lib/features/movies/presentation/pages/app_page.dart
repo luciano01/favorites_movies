@@ -66,12 +66,12 @@ class _AppPageState extends State<AppPage> {
                 label: 'Movies',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Favorites',
+                icon: Icon(Icons.search),
+                label: 'Search',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Settings',
+                icon: Icon(Icons.favorite),
+                label: 'Favorites',
               ),
             ],
           );
@@ -88,9 +88,9 @@ class _AppPageState extends State<AppPage> {
               return const Center(
                 child: Text('Favorites'),
               );
-            case NavBarItem.settings:
+            case NavBarItem.search:
               return const Center(
-                child: Text('Settings'),
+                child: Text('Search'),
               );
             default:
               return Container();

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:get_it/get_it.dart';
 
-enum NavBarItem { movie, favorites, settings }
+enum NavBarItem { movie, search, favorites }
 
 class BottomNavigationController extends Disposable {
   final _controller = StreamController<NavBarItem>.broadcast();
@@ -17,10 +17,10 @@ class BottomNavigationController extends Disposable {
         _controller.sink.add(NavBarItem.movie);
         break;
       case 1:
-        _controller.sink.add(NavBarItem.favorites);
+        _controller.sink.add(NavBarItem.search);
         break;
       case 2:
-        _controller.sink.add(NavBarItem.settings);
+        _controller.sink.add(NavBarItem.favorites);
         break;
     }
   }

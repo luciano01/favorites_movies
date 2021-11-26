@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class SearchFieldWidget extends StatelessWidget {
   final void Function()? onTap;
+  final Function(String)? onChanged;
   final FocusNode focusNode;
   const SearchFieldWidget({
     Key? key,
     required this.onTap,
     required this.focusNode,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -53,6 +55,7 @@ class SearchFieldWidget extends StatelessWidget {
           ),
         ),
         onTap: onTap,
+        onChanged: onChanged,
       ),
     );
   }
