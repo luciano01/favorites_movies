@@ -12,9 +12,9 @@ class PopularMoviesRepositoryImpl implements PopularMoviesRepository {
   });
 
   @override
-  Future<List<Movie>> getPopularMovies() async {
+  Future<List<Movie>> getPopularMovies(int page) async {
     try {
-      final remoteListOfMovies = await remote.getPopularMovies();
+      final remoteListOfMovies = await remote.getPopularMovies(page);
       return remoteListOfMovies;
     } on ServerException {
       throw ServerFailure('Internal Server Error.');

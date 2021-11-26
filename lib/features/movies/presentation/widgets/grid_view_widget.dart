@@ -17,7 +17,7 @@ class GridViewWidget extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisExtent: 250,
+          mainAxisExtent: 230,
         ),
         itemCount: listOfMovies.length,
         itemBuilder: (context, index) {

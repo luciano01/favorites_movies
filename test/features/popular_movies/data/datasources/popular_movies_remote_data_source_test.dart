@@ -42,7 +42,7 @@ void main() {
     when(mockClient.get(any, headers: anyNamed('headers')))
         .thenAnswer((_) async => http.Response(listFromFixture, 200));
     // act
-    final result = await popularMoviesRemoteDataSourceImpl.getPopularMovies();
+    final result = await popularMoviesRemoteDataSourceImpl.getPopularMovies(1);
     // assert
     expect(result, equals(tListOfMovieModel));
   });
@@ -53,7 +53,7 @@ void main() {
     when(mockClient.get(any, headers: anyNamed('headers')))
         .thenAnswer((_) async => http.Response('404', 404));
     // act
-    final result = popularMoviesRemoteDataSourceImpl.getPopularMovies();
+    final result = popularMoviesRemoteDataSourceImpl.getPopularMovies(1);
     // assert
     expect(result, throwsA(const TypeMatcher<HttpException>()));
   });
@@ -66,7 +66,7 @@ void main() {
     when(mockClient.get(any, headers: anyNamed('headers')))
         .thenAnswer((_) async => http.Response('500', 500));
     // act
-    final result = popularMoviesRemoteDataSourceImpl.getPopularMovies();
+    final result = popularMoviesRemoteDataSourceImpl.getPopularMovies(1);
     // assert
     expect(result, throwsA(const TypeMatcher<ServerException>()));
   });

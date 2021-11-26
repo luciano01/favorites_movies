@@ -12,6 +12,7 @@ class PosterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.network(
       BaseUrl.urlPosterPath(posterPath),
+      width: MediaQuery.of(context).size.width,
       height: 250,
       fit: BoxFit.fill,
     );

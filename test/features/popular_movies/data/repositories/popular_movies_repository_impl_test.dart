@@ -33,12 +33,12 @@ void main() {
   test('Should return data when call to remote data source is successful.',
       () async {
     // arrange
-    when(mockPopularMoviesRemoteDataSource.getPopularMovies())
+    when(mockPopularMoviesRemoteDataSource.getPopularMovies(1))
         .thenAnswer((_) async => tListOfMoviesModel);
     // act
-    final result = await popularMoviesRepositoryImpl.getPopularMovies();
+    final result = await popularMoviesRepositoryImpl.getPopularMovies(1);
     // assert
-    verify(mockPopularMoviesRemoteDataSource.getPopularMovies());
+    verify(mockPopularMoviesRemoteDataSource.getPopularMovies(1));
     expect(result, equals(tListOfMoviesModel));
   });
 }

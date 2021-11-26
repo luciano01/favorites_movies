@@ -7,7 +7,7 @@ class GetPopularMovies implements PopularMoviesRepository {
   GetPopularMovies({required this.repository});
 
   @override
-  Future<List<Movie>> getPopularMovies() async {
-    return await repository.getPopularMovies();
+  Future<List<Movie>> getPopularMovies(int page) async {
+    return await repository.getPopularMovies(page);
   }
 }

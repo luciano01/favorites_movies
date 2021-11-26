@@ -32,13 +32,13 @@ void main() {
 
   test('Should return a List<Movie> from the repository.', () async {
     // arrange
-    when(mockPopularMoviesRepository.getPopularMovies())
+    when(mockPopularMoviesRepository.getPopularMovies(1))
         .thenAnswer((_) async => listOfMovies);
     // act
-    final result = await getPopularMovies.getPopularMovies();
+    final result = await getPopularMovies.getPopularMovies( 1);
     // assert
     expect(result, listOfMovies);
-    verify(mockPopularMoviesRepository.getPopularMovies());
+    verify(mockPopularMoviesRepository.getPopularMovies(1));
     verifyNoMoreInteractions(mockPopularMoviesRepository);
   });
 }

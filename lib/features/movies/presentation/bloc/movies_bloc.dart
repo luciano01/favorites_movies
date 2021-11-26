@@ -17,9 +17,17 @@ class MoviesBloc extends Disposable {
   Stream<List<Movie>> get outPopularMovies => _popularMoviesSubject.stream;
   Sink<List<Movie>> get inputPopularMovies => _popularMoviesSubject.sink;
 
+  final List<Movie> _listOfPopularMovies = [];
+
+  int page = 0;
+
   getPopularMovies() async {
-    var listOfPopularMovies = await usecase.getPopularMovies();
-    inputPopularMovies.add(listOfPopularMovies);
+    page++;
+    var data = await usecase.getPopularMovies(page);
+    for (var user in data) {
+      _listOfPopularMovies.add(user);
+    }
+    inputPopularMovies.add(_listOfPopularMovies);
   }
 
   @override

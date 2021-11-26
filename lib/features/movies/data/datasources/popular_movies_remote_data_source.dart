@@ -7,7 +7,7 @@ import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class PopularMoviesRemoteDataSource {
-  Future<List<MovieModel>> getPopularMovies();
+  Future<List<MovieModel>> getPopularMovies(int page);
 }
 
 class PopularMoviesRemoteDataSourceImpl
@@ -21,10 +21,10 @@ class PopularMoviesRemoteDataSourceImpl
   });
 
   @override
-  Future<List<MovieModel>> getPopularMovies() async {
+  Future<List<MovieModel>> getPopularMovies(int page) async {
     if (await network.isConnected) {
       final response = await client.get(
-        Uri.parse(BaseUrl.urlPopularMovies),
+        Uri.parse('https://api.themoviedb.org/3/movie/popular?api_key=aec430914e97e1e5105c8480777cda9a&language=en-US&page=$page'),
         headers: {
           'Content-Type': 'application/json',
         },
