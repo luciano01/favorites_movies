@@ -33,6 +33,4 @@ class MockSearchMoviesRepository extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#searchMovies, [], {#title: title}),
               returnValue: Future<List<_i4.Movie>>.value(<_i4.Movie>[]))
           as _i3.Future<List<_i4.Movie>>);
-  @override
-  String toString() => super.toString();
 }
