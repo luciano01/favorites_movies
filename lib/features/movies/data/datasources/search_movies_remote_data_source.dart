@@ -5,11 +5,11 @@ import 'package:favorites_movies/core/network/network_info.dart';
 import 'package:favorites_movies/features/movies/data/models/movie_model.dart';
 import 'package:http/http.dart' as http;
 
-abstract class SearchoviesRemoteDataSource {
+abstract class SearchMoviesRemoteDataSource {
   Future<List<MovieModel>> searchMovies(String title);
 }
 
-class SearchMoviesRemoteDataSourceImpl implements SearchoviesRemoteDataSource {
+class SearchMoviesRemoteDataSourceImpl implements SearchMoviesRemoteDataSource {
   final http.Client client;
   final NetworkInfo network;
 
