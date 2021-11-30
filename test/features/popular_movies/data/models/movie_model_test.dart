@@ -12,6 +12,7 @@ void main() {
     title: 'title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
+    overview: 'overview',
     genreIds: [1, 2, 3],
     isFavorite: false,
   );
@@ -52,6 +53,7 @@ void main() {
       "title": "title",
       "release_date": "releaseDate",
       "poster_path": "posterPath",
+      "overview": "overview",
       "genre_ids": [1, 2, 3],
       "isFavorite": false
     };

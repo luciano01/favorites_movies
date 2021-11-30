@@ -5,6 +5,7 @@ class Movie extends Equatable {
   final String title;
   final String releaseDate;
   final String posterPath;
+  final String overview;
   final List<int> genreIds;
   final bool isFavorite;
 
@@ -13,6 +14,7 @@ class Movie extends Equatable {
     required this.title,
     required this.releaseDate,
     required this.posterPath,
+    required this.overview,
     required this.genreIds,
     required this.isFavorite,
   });
@@ -23,6 +25,7 @@ class Movie extends Equatable {
         title,
         releaseDate,
         posterPath,
+        overview,
         genreIds,
       ];
 }

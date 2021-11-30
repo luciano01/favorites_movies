@@ -24,6 +24,7 @@ void main() {
     title: 'Title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
+    overview: 'overview',
     genreIds: [1, 2, 3],
     isFavorite: false,
   );

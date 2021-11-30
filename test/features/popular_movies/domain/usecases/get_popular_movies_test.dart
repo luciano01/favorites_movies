@@ -24,6 +24,7 @@ void main() {
     title: 'Title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
+    overview: 'overview',
     genreIds: [1, 2, 3],
     isFavorite: false,
   );
@@ -35,7 +36,7 @@ void main() {
     when(mockPopularMoviesRepository.getPopularMovies(1))
         .thenAnswer((_) async => listOfMovies);
     // act
-    final result = await getPopularMovies.getPopularMovies( 1);
+    final result = await getPopularMovies.getPopularMovies(1);
     // assert
     expect(result, listOfMovies);
     verify(mockPopularMoviesRepository.getPopularMovies(1));

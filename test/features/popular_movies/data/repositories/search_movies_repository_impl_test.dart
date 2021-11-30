@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'search_movies_repository_impl.mocks.dart';
+import 'search_movies_repository_impl_test.mocks.dart';
 
 @GenerateMocks([SearchMoviesRemoteDataSource])
 void main() {
@@ -24,6 +24,7 @@ void main() {
     title: 'Title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
+    overview: 'overview',
     genreIds: [1, 2, 3],
     isFavorite: false,
   );

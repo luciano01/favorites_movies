@@ -3,6 +3,7 @@
     "title": "title",
     "release_date": "releaseDate",
     "poster_path": "posterPath",
+    "overview": "overview",
     "genre_ids": [
         1,
         2,

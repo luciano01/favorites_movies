@@ -2,6 +2,7 @@ import 'package:favorites_movies/core/utils/app_colors.dart';
 import 'package:favorites_movies/core/utils/app_text_styles.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/controller/bottom_navigation_controller.dart';
 import 'package:favorites_movies/features/movies/presentation/pages/movies_page.dart';
+import 'package:favorites_movies/features/movies/presentation/pages/search_page.dart';
 import 'package:flutter/material.dart';
 
 class AppPage extends StatefulWidget {
@@ -32,20 +33,40 @@ class _AppPageState extends State<AppPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        title: const Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'Popular',
-                style: AppTextStyles.textFavoritesStyle,
-              ),
-              TextSpan(
-                text: 'Movies',
-                style: AppTextStyles.textMoviesStyle,
-              ),
-            ],
-          ),
-        ),
+        title: StreamBuilder<NavBarItem>(
+            stream: _bottomNavigationController.page,
+            builder: (context, snapshot) {
+              var index = snapshot.data?.index ?? 0;
+              var title = '';
+              switch (index) {
+                case 0:
+                  title = 'Popular';
+                  break;
+                case 1:
+                  title = 'Search';
+                  break;
+                case 2:
+                  title = 'Favorites';
+                  break;
+                default:
+                  title = '';
+                  break;
+              }
+              return Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: title,
+                      style: AppTextStyles.textFavoritesStyle,
+                    ),
+                    const TextSpan(
+                      text: 'Movies',
+                      style: AppTextStyles.textMoviesStyle,
+                    ),
+                  ],
+                ),
+              );
+            }),
         centerTitle: true,
         elevation: 0,
       ),
@@ -84,13 +105,11 @@ class _AppPageState extends State<AppPage> {
           switch (snapshot.data) {
             case NavBarItem.movie:
               return const MoviesPage();
+            case NavBarItem.search:
+              return const SearchPage();
             case NavBarItem.favorites:
               return const Center(
                 child: Text('Favorites'),
-              );
-            case NavBarItem.search:
-              return const Center(
-                child: Text('Search'),
               );
             default:
               return Container();
