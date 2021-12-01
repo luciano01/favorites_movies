@@ -5,6 +5,7 @@ import 'package:favorites_movies/features/movies/domain/entities/genre.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/details_bloc.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 class DetailsPage extends StatefulWidget {
@@ -19,7 +20,8 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   void initState() {
-    _bloc.getMovieDetails(id: 524434);
+    var id = Get.arguments;
+    _bloc.getMovieDetails(id: id);
     super.initState();
   }
 
@@ -78,11 +80,13 @@ class _DetailsPageState extends State<DetailsPage> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: IconButton(
-                            onPressed: () {},
                             icon: const Icon(
                               Icons.arrow_back,
                               color: AppColors.accent,
                             ),
+                            onPressed: () {
+                              Get.back();
+                            },
                           ),
                         ),
                       ),

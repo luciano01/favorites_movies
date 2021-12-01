@@ -5,6 +5,7 @@ import 'package:favorites_movies/features/movies/presentation/widgets/loading_wi
 import 'package:favorites_movies/features/movies/presentation/widgets/search_field_widget.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/search_list_item_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 class SearchPage extends StatefulWidget {
@@ -79,7 +80,12 @@ class _SearchPageState extends State<SearchPage> {
                         itemBuilder: (context, index) {
                           return SearchListItemWidget(
                             movie: listOfSearchMovies[index],
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(
+                                '/details',
+                                arguments: listOfSearchMovies[index].id,
+                              );
+                            },
                             onPressed: () {},
                           );
                         },

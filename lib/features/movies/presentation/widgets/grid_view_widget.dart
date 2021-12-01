@@ -2,6 +2,7 @@ import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/list_item_widget.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class GridViewWidget extends StatelessWidget {
   final List<Movie> listOfPopularMovies;
@@ -32,7 +33,12 @@ class GridViewWidget extends StatelessWidget {
           } else {
             return ListItemWidget(
               movie: listOfPopularMovies[index],
-              onTap: () {},
+              onTap: () {
+                Get.toNamed(
+                  '/details',
+                  arguments: listOfPopularMovies[index].id,
+                );
+              },
               onPressed: () {},
             );
           }

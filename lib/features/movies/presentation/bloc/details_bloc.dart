@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:favorites_movies/features/movies/domain/entities/detail.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_movie_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -18,9 +17,6 @@ class DetailsBloc extends Disposable {
 
   getMovieDetails({required int id}) async {
     var data = await usecase.getMovieDetails(id: id);
-
-    debugPrint(data.originalTitle);
-
     movieDetailsSink.add(data);
   }
 
