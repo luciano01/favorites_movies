@@ -1,12 +1,17 @@
 import 'package:favorites_movies/core/network/network_info.dart';
+import 'package:favorites_movies/features/movies/data/datasources/movie_details_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/datasources/popular_movies_remote_data_source.dart';
 import 'package:favorites_movies/features/movies/data/datasources/search_movies_remote_data_source.dart';
+import 'package:favorites_movies/features/movies/data/repositories/movie_details_repository_impl.dart';
 import 'package:favorites_movies/features/movies/data/repositories/popular_movies_repository_impl.dart';
 import 'package:favorites_movies/features/movies/data/repositories/search_movies_repository_impl.dart';
+import 'package:favorites_movies/features/movies/domain/repositories/movie_details_repository.dart';
 import 'package:favorites_movies/features/movies/domain/repositories/popular_movies_repository.dart';
 import 'package:favorites_movies/features/movies/domain/repositories/search_movies_repository.dart';
+import 'package:favorites_movies/features/movies/domain/usecases/get_movie_details.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/get_popular_movies.dart';
 import 'package:favorites_movies/features/movies/domain/usecases/search_movies.dart';
+import 'package:favorites_movies/features/movies/presentation/bloc/details_bloc.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/search_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -27,6 +32,11 @@ Future<void> init() async {
       usecase: sl(),
     ),
   );
+  sl.registerFactory(
+    () => DetailsBloc(
+      usecase: sl(),
+    ),
+  );
 
   // UseCases
   sl.registerLazySingleton(
@@ -36,6 +46,11 @@ Future<void> init() async {
   );
   sl.registerLazySingleton(
     () => SearchMovies(
+      repository: sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => GetMovieDetails(
       repository: sl(),
     ),
   );
@@ -51,6 +66,11 @@ Future<void> init() async {
       remote: sl(),
     ),
   );
+  sl.registerLazySingleton<MovieDetailsRepository>(
+    () => MovieDetailsRepositoryImpl(
+      remote: sl(),
+    ),
+  );
 
   // DataSources
   sl.registerLazySingleton<PopularMoviesRemoteDataSource>(
@@ -61,6 +81,12 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<SearchMoviesRemoteDataSource>(
     () => SearchMoviesRemoteDataSourceImpl(
+      client: sl(),
+      network: sl(),
+    ),
+  );
+  sl.registerLazySingleton<MovieDetailsRemoteDataSource>(
+    () => MovieDetailsRemoteDataSourceImpl(
       client: sl(),
       network: sl(),
     ),

@@ -34,17 +34,16 @@ void main() {
   });
 
   var tId = 01;
-  final listFromFixture = fixture('list_details.json');
-  final body = jsonDecode(listFromFixture);
-  final results = body["results"];
-  final tListOfDetailModel = DetailModel.fromJsonList(results);
+  final detailsFromFixture = fixture('list_details.json');
+  final body = jsonDecode(detailsFromFixture);
+  final tListOfDetailModel = DetailModel.fromJson(body);
 
-  test('Should return a List<DetailModel> when the response code is 200.',
+  test('Should return a DetailModel when the response code is 200.',
       () async {
     // arrange
     when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
     when(mockClient.get(any, headers: anyNamed('headers')))
-        .thenAnswer((_) async => http.Response(listFromFixture, 200));
+        .thenAnswer((_) async => http.Response(detailsFromFixture, 200));
     // act
     final result =
         await movieDetailsRemoteDataSourceImpl.getMovieDetails(id: tId);

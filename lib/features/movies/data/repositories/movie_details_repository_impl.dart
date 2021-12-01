@@ -12,14 +12,14 @@ class MovieDetailsRepositoryImpl implements MovieDetailsRepository {
   });
 
   @override
-  Future<List<Detail>> getMovieDetails({required int id}) async {
+  Future<Detail> getMovieDetails({required int id}) async {
     try {
-      final remoteListOfMovieDetails = await remote.getMovieDetails(id: id);
-      return remoteListOfMovieDetails;
+      final remoteMovieDetails = await remote.getMovieDetails(id: id);
+      return remoteMovieDetails;
     } on ServerException {
       throw ServerFailure('Internal Server Error.');
     } on HttpException {
-      throw HttpFailure('Couldn\'t find the List of Movie Details.');
+      throw HttpFailure('Couldn\'t find the Movie Details.');
     } on SocketException {
       throw SocketFailure('No Internet connection!');
     }

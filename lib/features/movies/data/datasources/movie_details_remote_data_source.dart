@@ -6,7 +6,7 @@ import 'package:favorites_movies/features/movies/data/models/detail_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class MovieDetailsRemoteDataSource {
-  Future<List<DetailModel>> getMovieDetails({required int id});
+  Future<DetailModel> getMovieDetails({required int id});
 }
 
 class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
@@ -19,7 +19,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
   });
 
   @override
-  Future<List<DetailModel>> getMovieDetails({required int id}) async {
+  Future<DetailModel> getMovieDetails({required int id}) async {
     if (await network.isConnected) {
       final response = await client.get(
         Uri.parse(
@@ -33,7 +33,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsRemoteDataSource {
       var body = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
-        return DetailModel.fromJsonList(body["results"]);
+        return DetailModel.fromJson(body);
       } else if (response.statusCode == 404) {
         throw HttpException();
       } else {

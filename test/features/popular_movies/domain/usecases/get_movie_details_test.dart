@@ -32,16 +32,14 @@ void main() {
     overview: 'overview',
   );
 
-  final listOfDetails = <Detail>[tDetail];
-
-  test('Should return a List<Detail> from the repository.', () async {
+  test('Should return a Detail from the repository.', () async {
     // arrange
     when(mockMovieDetailsRepository.getMovieDetails(id: tId))
-        .thenAnswer((_) async => listOfDetails);
+        .thenAnswer((_) async => tDetail);
     // act
     final result = await getMovieDetails.getMovieDetails(id: tId);
     // assert
-    expect(result, listOfDetails);
+    expect(result, tDetail);
     verify(mockMovieDetailsRepository.getMovieDetails(id: tId));
     verifyNoMoreInteractions(mockMovieDetailsRepository);
   });

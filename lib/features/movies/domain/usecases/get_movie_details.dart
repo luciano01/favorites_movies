@@ -7,7 +7,7 @@ class GetMovieDetails implements MovieDetailsRepository {
   GetMovieDetails({required this.repository});
 
   @override
-  Future<List<Detail>> getMovieDetails({required int id}) async {
+  Future<Detail> getMovieDetails({required int id}) async {
     return await repository.getMovieDetails(id: id);
   }
 }

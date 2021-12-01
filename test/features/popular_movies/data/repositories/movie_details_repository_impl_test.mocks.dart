@@ -2,12 +2,12 @@
 // in favorites_movies/test/features/popular_movies/data/repositories/movie_details_repository_impl_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i3;
+import 'dart:async' as _i4;
 
 import 'package:favorites_movies/features/movies/data/datasources/movie_details_remote_data_source.dart'
-    as _i2;
+    as _i3;
 import 'package:favorites_movies/features/movies/data/models/detail_model.dart'
-    as _i4;
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -19,21 +19,22 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: camel_case_types
 
+class _FakeDetailModel_0 extends _i1.Fake implements _i2.DetailModel {}
+
 /// A class which mocks [MovieDetailsRemoteDataSource].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockMovieDetailsRemoteDataSource extends _i1.Mock
-    implements _i2.MovieDetailsRemoteDataSource {
+    implements _i3.MovieDetailsRemoteDataSource {
   MockMovieDetailsRemoteDataSource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.DetailModel>> getMovieDetails({int? id}) =>
+  _i4.Future<_i2.DetailModel> getMovieDetails({int? id}) =>
       (super.noSuchMethod(Invocation.method(#getMovieDetails, [], {#id: id}),
-              returnValue:
-                  Future<List<_i4.DetailModel>>.value(<_i4.DetailModel>[]))
-          as _i3.Future<List<_i4.DetailModel>>);
+              returnValue: Future<_i2.DetailModel>.value(_FakeDetailModel_0()))
+          as _i4.Future<_i2.DetailModel>);
   @override
   String toString() => super.toString();
 }

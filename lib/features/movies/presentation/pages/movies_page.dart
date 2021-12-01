@@ -34,10 +34,6 @@ class _MoviesPageState extends State<MoviesPage> {
     return Scaffold(
       body: Container(
         color: AppColors.background,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 16,
-        ),
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,

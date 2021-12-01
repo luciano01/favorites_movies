@@ -1,3 +1,4 @@
+import 'package:favorites_movies/features/movies/data/models/genre_model.dart';
 import 'package:favorites_movies/features/movies/domain/entities/detail.dart';
 import 'package:favorites_movies/features/movies/domain/entities/genre.dart';
 
@@ -27,7 +28,8 @@ class DetailModel extends Detail {
       id: json['id'] ?? 0,
       originalTitle: json['original_title'] ?? 'No Original Title',
       backdropPath: json['backdrop_path'] ?? 'No Backdrop Path',
-      genres: List<Genre>.from(json['genres'] ?? const []),
+      genres: List<GenreModel>.from(
+          json["genres"].map((x) => GenreModel.fromJson(x))),
       releaseDate: json['release_date'] ?? 'No Release Date',
       runtime: json['runtime'] ?? 'No Runtime',
       voteAverage: json['vote_average'] ?? 0.0,

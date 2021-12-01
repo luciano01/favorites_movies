@@ -32,17 +32,15 @@ void main() {
 
   var tId = 001;
 
-  final tListOfDetailModel = <DetailModel>[tDetailModel];
-
   test('Should return data when call to remote data source is successful.',
       () async {
     // arrange
     when(movieDetailsRepositoryImpl.getMovieDetails(id: tId))
-        .thenAnswer((_) async => tListOfDetailModel);
+        .thenAnswer((_) async => tDetailModel);
     // act
     final result = await movieDetailsRepositoryImpl.getMovieDetails(id: tId);
     // assert
     verify(movieDetailsRepositoryImpl.getMovieDetails(id: tId));
-    expect(result, equals(tListOfDetailModel));
+    expect(result, equals(tDetailModel));
   });
 }
