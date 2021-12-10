@@ -1,4 +1,5 @@
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
+import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/list_item_widget.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +8,12 @@ import 'package:get/get.dart';
 class GridViewWidget extends StatelessWidget {
   final List<Movie> listOfPopularMovies;
   final ScrollController scrollController;
+  final MoviesBloc bloc;
   const GridViewWidget({
     Key? key,
     required this.listOfPopularMovies,
     required this.scrollController,
+    required this.bloc,
   }) : super(key: key);
 
   @override
@@ -39,7 +42,9 @@ class GridViewWidget extends StatelessWidget {
                   arguments: listOfPopularMovies[index].id,
                 );
               },
-              onPressed: () {},
+              onPressed: () {
+                bloc.addOrRemoveFavorite(movie: listOfPopularMovies[index]);
+              },
             );
           }
         },

@@ -37,7 +37,7 @@ class _MoviesPageState extends State<MoviesPage> {
         child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          child: StreamBuilder(
+          child: StreamBuilder<List<Movie>>(
             stream: _bloc.outPopularMovies,
             builder: (context, AsyncSnapshot<List<Movie>> snapshot) {
               List<Movie>? listOfPopularMovies = snapshot.data;
@@ -50,6 +50,7 @@ class _MoviesPageState extends State<MoviesPage> {
                 return GridViewWidget(
                   listOfPopularMovies: listOfPopularMovies,
                   scrollController: _scrollController,
+                  bloc: _bloc,
                 );
               }
               return const LoadingWidget();

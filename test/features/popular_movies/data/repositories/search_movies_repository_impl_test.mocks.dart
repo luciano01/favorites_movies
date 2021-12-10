@@ -34,6 +34,4 @@ class MockSearchMoviesRemoteDataSource extends _i1.Mock
               returnValue:
                   Future<List<_i4.MovieModel>>.value(<_i4.MovieModel>[]))
           as _i3.Future<List<_i4.MovieModel>>);
-  @override
-  String toString() => super.toString();
 }

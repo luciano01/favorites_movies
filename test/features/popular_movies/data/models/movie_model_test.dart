@@ -7,13 +7,13 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {
-  var tMovieModel = const MovieModel(
+  var tMovieModel = MovieModel(
     id: 1,
     title: 'title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
     overview: 'overview',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     isFavorite: false,
   );
 

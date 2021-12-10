@@ -1,6 +1,7 @@
 import 'package:favorites_movies/core/utils/app_colors.dart';
 import 'package:favorites_movies/core/utils/app_text_styles.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/controller/bottom_navigation_controller.dart';
+import 'package:favorites_movies/features/movies/presentation/pages/favorites_page.dart';
 import 'package:favorites_movies/features/movies/presentation/pages/movies_page.dart';
 import 'package:favorites_movies/features/movies/presentation/pages/search_page.dart';
 import 'package:flutter/material.dart';
@@ -108,9 +109,7 @@ class _AppPageState extends State<AppPage> {
             case NavBarItem.search:
               return const SearchPage();
             case NavBarItem.favorites:
-              return const Center(
-                child: Text('Favorites'),
-              );
+              return const FavoritesPage();
             default:
               return Container();
           }

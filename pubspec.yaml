@@ -22,12 +22,16 @@ dependencies:
   google_fonts: ^2.1.0
   rxdart: ^0.27.3
   get: ^4.5.1
+  hive: ^2.0.4
+  hive_flutter: ^1.1.0
+  path_provider: ^2.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
   mockito: ^5.0.16
+  hive_generator: ^1.1.1
 
 flutter:
   uses-material-design: true

@@ -1,8 +1,9 @@
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 
+// ignore: must_be_immutable
 class MovieModel extends Movie {
-  const MovieModel({
-    required int id,
+  MovieModel({
+    int? id,
     required String title,
     required String releaseDate,
     required String posterPath,

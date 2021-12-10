@@ -86,7 +86,11 @@ class _SearchPageState extends State<SearchPage> {
                                 arguments: listOfSearchMovies[index].id,
                               );
                             },
-                            onPressed: () {},
+                            onPressed: () {
+                              _bloc.addOrRemoveFavorite(
+                                movie: listOfSearchMovies[index],
+                              );
+                            },
                           );
                         },
                       ),

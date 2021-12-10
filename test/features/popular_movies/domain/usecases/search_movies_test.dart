@@ -21,13 +21,13 @@ void main() {
 
   var tTitle = 'Title';
 
-  var tMovie = const Movie(
+  var tMovie = Movie(
     id: 1,
     title: 'Title',
     releaseDate: 'releaseDate',
     posterPath: 'posterPath',
     overview: 'overview',
-    genreIds: [1, 2, 3],
+    genreIds: const [1, 2, 3],
     isFavorite: false,
   );
 
