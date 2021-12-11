@@ -64,8 +64,28 @@ class MoviesBloc extends Disposable {
         id: movie.id,
         isFavorite: !movie.isFavorite,
       );
+      var index = _listOfPopularMovies.indexWhere(
+        (element) => element.id == movie.id,
+      );
+      _listOfPopularMovies.replaceRange(
+        index,
+        index + 1,
+        [movieToCreate],
+      );
       await createUsecase.create(movie: movieToCreate);
     } else {
+      var movieToUpdate = movie.copy(
+        id: movie.id,
+        isFavorite: !movie.isFavorite,
+      );
+      var index = _listOfPopularMovies.indexWhere(
+        (element) => element.id == movie.id,
+      );
+      _listOfPopularMovies.replaceRange(
+        index,
+        index + 1,
+        [movieToUpdate],
+      );
       await deleteUsecase.delete(id: movie.id!);
     }
   }

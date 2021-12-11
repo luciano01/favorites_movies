@@ -90,6 +90,7 @@ class _SearchPageState extends State<SearchPage> {
                               _bloc.addOrRemoveFavorite(
                                 movie: listOfSearchMovies[index],
                               );
+                              setState(() {});
                             },
                           );
                         },

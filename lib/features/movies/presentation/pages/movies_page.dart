@@ -1,9 +1,10 @@
 import 'package:favorites_movies/core/utils/app_colors.dart';
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/movies_bloc.dart';
-import 'package:favorites_movies/features/movies/presentation/widgets/grid_view_widget.dart';
+import 'package:favorites_movies/features/movies/presentation/widgets/list_item_widget.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 class MoviesPage extends StatefulWidget {
@@ -47,10 +48,40 @@ class _MoviesPageState extends State<MoviesPage> {
               } else if (listOfPopularMovies == null) {
                 return const LoadingWidget();
               } else if (snapshot.hasData) {
-                return GridViewWidget(
-                  listOfPopularMovies: listOfPopularMovies,
-                  scrollController: _scrollController,
-                  bloc: _bloc,
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                  ),
+                  child: GridView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisExtent: 230,
+                    ),
+                    controller: _scrollController,
+                    itemCount: listOfPopularMovies.length + 1,
+                    itemBuilder: (context, index) {
+                      if (index == listOfPopularMovies.length) {
+                        return const LoadingWidget();
+                      } else {
+                        return ListItemWidget(
+                          movie: listOfPopularMovies[index],
+                          onTap: () {
+                            Get.toNamed(
+                              '/details',
+                              arguments: listOfPopularMovies[index].id,
+                            );
+                          },
+                          onPressed: () {
+                            _bloc.addOrRemoveFavorite(
+                                movie: listOfPopularMovies[index]);
+                            setState(() {});
+                          },
+                        );
+                      }
+                    },
+                  ),
                 );
               }
               return const LoadingWidget();

@@ -86,8 +86,30 @@ class SearchBloc extends Disposable {
         id: movie.id,
         isFavorite: !movie.isFavorite,
       );
+      var list = _searchMoviesSubject.value;
+      var index = list.indexWhere(
+        (element) => element.id == movie.id,
+      );
+      list.replaceRange(
+        index,
+        index + 1,
+        [movieToCreate],
+      );
       await createUsecase.create(movie: movieToCreate);
     } else {
+      var movieToUpdate = movie.copy(
+        id: movie.id,
+        isFavorite: !movie.isFavorite,
+      );
+      var list = _searchMoviesSubject.value;
+      var index = list.indexWhere(
+        (element) => element.id == movie.id,
+      );
+      list.replaceRange(
+        index,
+        index + 1,
+        [movieToUpdate],
+      );
       await deleteUsecase.delete(id: movie.id!);
     }
   }

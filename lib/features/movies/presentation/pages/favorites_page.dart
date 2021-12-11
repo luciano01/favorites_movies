@@ -1,7 +1,6 @@
 import 'package:favorites_movies/core/utils/app_colors.dart';
 import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/favorites_bloc.dart';
-import 'package:favorites_movies/features/movies/presentation/widgets/loading_widget.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/search_list_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,7 +38,26 @@ class _FavoritesPageState extends State<FavoritesPage> {
       valueListenable: Hive.box<Movie>('movies').listenable(),
       builder: (context, box, _) {
         if (box.isEmpty) {
-          return const LoadingWidget();
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.movie,
+                  color: AppColors.accent,
+                  size: 64,
+                ),
+                Text(
+                  'Você não tem filmes favoritos.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+          );
         }
 
         return ListView.builder(
