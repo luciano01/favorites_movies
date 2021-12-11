@@ -2,7 +2,9 @@
 Retrieving movies from API and saving favorite movies locally.
 
 ## Screenshots
-Soon...
+<p float="left">
+  <img width="200" src="https://github.com/luciano01/favorites_movies/blob/master/assets/screenshots/Popular.png"> <img width="200" src="https://github.com/luciano01/favorites_movies/blob/master/assets/screenshots/Search.png"> <img width="200" src="https://github.com/luciano01/favorites_movies/blob/master/assets/screenshots/Favorites.png">
+</p>
 
 ## For developers
 > To clone locally
