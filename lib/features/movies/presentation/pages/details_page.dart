@@ -62,8 +62,8 @@ class _DetailsPageState extends State<DetailsPage> {
                     children: [
                       ClipRRect(
                         borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(16),
-                          bottomRight: Radius.circular(16),
+                          bottomLeft: Radius.circular(4),
+                          bottomRight: Radius.circular(4),
                         ),
                         child: Image.network(
                           BaseUrl.urlPosterPath(movie.backdropPath),
@@ -77,7 +77,7 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: AppColors.white,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(4),
                           ),
                           child: IconButton(
                             icon: const Icon(

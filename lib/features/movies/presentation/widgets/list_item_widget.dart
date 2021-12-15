@@ -20,9 +20,6 @@ class ListItemWidget extends StatelessWidget {
       clipBehavior: Clip.antiAliasWithSaveLayer,
       semanticContainer: true,
       margin: const EdgeInsets.all(5),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
       child: InkWell(
         child: Stack(
           children: [

@@ -18,7 +18,7 @@ class FavoriteButtonWidget extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(4),
           color: AppColors.white,
         ),
         child: Material(

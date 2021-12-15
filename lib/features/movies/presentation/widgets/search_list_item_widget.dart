@@ -26,9 +26,6 @@ class SearchListItemWidget extends StatelessWidget {
           children: [
             Card(
               clipBehavior: Clip.antiAliasWithSaveLayer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
               child: Image.network(
                 BaseUrl.urlPosterPath(movie.posterPath),
                 width: 80,
