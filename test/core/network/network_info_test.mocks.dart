@@ -78,6 +78,4 @@ class MockInternetConnectionChecker extends _i1.Mock
               returnValue: Future<_i2.AddressCheckResult>.value(
                   _FakeAddressCheckResult_1()))
           as _i3.Future<_i2.AddressCheckResult>);
-  @override
-  String toString() => super.toString();
 }

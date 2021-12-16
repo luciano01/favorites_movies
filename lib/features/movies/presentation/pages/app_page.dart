@@ -84,7 +84,7 @@ class _AppPageState extends State<AppPage> {
             unselectedItemColor: AppColors.unselectedItemColor,
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.movie),
+                icon: Icon(Icons.local_movies),
                 label: 'Movies',
               ),
               BottomNavigationBarItem(

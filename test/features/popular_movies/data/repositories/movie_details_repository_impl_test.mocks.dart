@@ -35,6 +35,4 @@ class MockMovieDetailsRemoteDataSource extends _i1.Mock
       (super.noSuchMethod(Invocation.method(#getMovieDetails, [], {#id: id}),
               returnValue: Future<_i2.DetailModel>.value(_FakeDetailModel_0()))
           as _i4.Future<_i2.DetailModel>);
-  @override
-  String toString() => super.toString();
 }

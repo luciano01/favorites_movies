@@ -3,7 +3,6 @@ import 'package:favorites_movies/features/movies/domain/entities/movie.dart';
 import 'package:favorites_movies/features/movies/presentation/bloc/favorites_bloc.dart';
 import 'package:favorites_movies/features/movies/presentation/widgets/search_list_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -43,12 +42,22 @@ class _FavoritesPageState extends State<FavoritesPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Icon(
-                  Icons.movie,
+                  Icons.favorite_outline,
                   color: AppColors.accent,
-                  size: 64,
+                  size: 72,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Oops!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 Text(
-                  'Você não tem filmes favoritos.',
+                  'You don\'t have favorite movies.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColors.white,
@@ -67,12 +76,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
             return SearchListItemWidget(
               movie: movie,
-              onTap: () {
-                Get.toNamed(
-                  '/details',
-                  arguments: movie,
-                );
-              },
+              onTap: () {},
               onPressed: () {
                 _bloc.delete(id: movie.id!);
               },

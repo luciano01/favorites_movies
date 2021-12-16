@@ -1,6 +1,7 @@
 import 'package:favorites_movies/core/utils/app_colors.dart';
 import 'package:favorites_movies/features/movies/presentation/pages/app_page.dart';
 import 'package:favorites_movies/features/movies/presentation/pages/details_page.dart';
+import 'package:favorites_movies/features/movies/presentation/pages/launch_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -29,6 +30,11 @@ class AppWidget extends StatelessWidget {
       getPages: [
         GetPage(
           name: '/',
+          page: () => const LaunchPage(),
+          transition: Transition.rightToLeft,
+        ),
+        GetPage(
+          name: '/home',
           page: () => const AppPage(),
           transition: Transition.rightToLeft,
         ),
